@@ -1,0 +1,176 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&display=swap');
+
+:root {
+	--bg-1: #0f1020;
+	--bg-2: #1a1040;
+	--bg-3: #1b1c3a;
+	--pink: #ff6ec7;
+	--blue: #8be9fd;
+	--yellow: #ffd166;
+	--violet: #b084ff;
+	--white: #ffffff;
+}
+
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+html,
+body,
+#root {
+	height: 100%;
+}
+
+body {
+	font-family: 'Space Grotesk', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, 'Apple Color Emoji', 'Segoe UI Emoji';
+	background: radial-gradient(1200px 800px at 10% 10%, rgba(255, 110, 199, 0.25), transparent 60%),
+		radial-gradient(1000px 700px at 90% 20%, rgba(139, 233, 253, 0.25), transparent 60%),
+		radial-gradient(1000px 900px at 40% 100%, rgba(176, 132, 255, 0.25), transparent 60%),
+		linear-gradient(120deg, var(--bg-1), var(--bg-2) 40%, var(--bg-3));
+	background-size: 200% 200%;
+	animation: gradientShift 18s ease-in-out infinite;
+	color: var(--white);
+	overflow: hidden;
+}
+
+@keyframes gradientShift {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+.page {
+	position: relative;
+	min-height: 100vh;
+}
+
+.content {
+	position: relative;
+	z-index: 5;
+	min-height: 100vh;
+	display: grid;
+	place-items: center;
+	padding: 6rem 1.25rem 4rem;
+	text-align: center;
+	pointer-events: none; /* let interactions pass through to draggable photos */
+}
+
+.title {
+	font-size: clamp(2.75rem, 6vw, 6rem);
+	line-height: 1.05;
+	font-weight: 800;
+	letter-spacing: -0.02em;
+	background: linear-gradient(90deg, var(--pink), var(--yellow), var(--blue), var(--violet));
+	background-size: 200% 200%;
+	-webkit-background-clip: text;
+	background-clip: text;
+	color: transparent;
+	animation: hue 10s ease-in-out infinite;
+	text-shadow: 0 0 20px rgba(255, 255, 255, 0.08);
+}
+
+/* Re-enable pointer events on interactive text elements if needed */
+.content .title, .content .subtitle {
+	pointer-events: auto;
+}
+
+@keyframes hue {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+.subtitle {
+	margin-top: 1rem;
+	font-size: clamp(1rem, 2.5vw, 1.375rem);
+	opacity: 0.9;
+	color: rgba(255, 255, 255, 0.9);
+}
+
+.hearts {
+	position: absolute;
+	inset: 0;
+	pointer-events: none;
+	z-index: 4;
+}
+
+.heart {
+	position: absolute;
+	font-size: 30px;
+	filter: drop-shadow(0 4px 10px rgba(255, 110, 199, 0.45));
+	user-select: none;
+}
+
+/* Floating photos layer */
+.photos-layer {
+	position: absolute;
+	inset: 0;
+	pointer-events: none; /* images re-enable pointer-events individually */
+	z-index: 2; /* below content (which is z=5) */
+}
+
+.photo-card {
+	position: absolute;
+	border-radius: 16px;
+	box-shadow:
+		0 2px 10px rgba(0,0,0,0.15),
+		0 20px 60px rgba(176, 132, 255, 0.15);
+	border: 1px solid rgba(255, 255, 255, 0.15);
+	backdrop-filter: blur(2px);
+	opacity: 0.95;
+	user-select: none;
+	pointer-events: auto; /* allow drag */
+	/* Prevent 0-height before image loads */
+	aspect-ratio: 3 / 4;
+	height: auto;
+	object-fit: cover;
+	background: radial-gradient(60% 40% at 50% 40%, rgba(255, 255, 255, 0.06), transparent 60%);
+}
+
+/* Scatter hearts around the viewport */
+.heart:nth-child(1) { top: 12%; left: 10%; }
+.heart:nth-child(2) { top: 18%; left: 70%; }
+.heart:nth-child(3) { top: 26%; left: 36%; }
+.heart:nth-child(4) { top: 34%; left: 83%; }
+.heart:nth-child(5) { top: 46%; left: 6%; }
+.heart:nth-child(6) { top: 54%; left: 28%; }
+.heart:nth-child(7) { top: 62%; left: 74%; }
+.heart:nth-child(8) { top: 68%; left: 52%; }
+.heart:nth-child(9) { top: 78%; left: 16%; }
+.heart:nth-child(10) { top: 82%; left: 86%; }
+.heart:nth-child(11) { top: 12%; left: 86%; }
+.heart:nth-child(12) { top: 84%; left: 34%; }
+.heart:nth-child(13) { top: 58%; left: 90%; }
+.heart:nth-child(14) { top: 30%; left: 14%; }
+.heart:nth-child(15) { top: 40%; left: 58%; }
+.heart:nth-child(16) { top: 72%; left: 42%; }
+
+/* Accent spans */
+.accent {
+	text-decoration: none;
+	/* Ensure gradient text applies even inside spans with filters */
+	background: inherit;
+	background-size: inherit;
+	-webkit-background-clip: text;
+	background-clip: text;
+	color: transparent;
+	-webkit-text-fill-color: transparent;
+	filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.06));
+}
+
+/* Improve rendering on macOS */
+.title, .subtitle { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
