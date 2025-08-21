@@ -8,13 +8,13 @@ export const AudioPlayer: React.FC = () => {
 		const sources: Record<string, string>[] = []
 		sources.push(import.meta.glob('../songs/**/*.{mp3,m4a,ogg,wav,webm}', { eager: true, query: '?url', import: 'default' }) as Record<string, string>)
 		sources.push(import.meta.glob('../assets/songs/**/*.{mp3,m4a,ogg,wav,webm}', { eager: true, query: '?url', import: 'default' }) as Record<string, string>)
-		const mod = Object.assign({}, ...sources)
+		const mod = Object.assign({}, ...sources) as Record<string, string>
 		return Object.entries(mod)
 			.sort(([a], [b]) => a.localeCompare(b))
 			.map(([path, url]) => {
 				const file = path.split('/').pop() || 'track'
 				const decoded = decodeURIComponent(file)
-				return { url, name: decoded }
+				return { url: String(url), name: decoded }
 			})
 	}, [])
 
