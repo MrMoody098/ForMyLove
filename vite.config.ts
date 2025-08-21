@@ -1,10 +1,10 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 
-export default defineConfig({
+export default defineConfig(({ mode }) => ({
 	plugins: [react()],
-	// Set base for GitHub Pages project site
-	base: '/ForMyLove/',
-})
+	// Use base only in production (GitHub Pages)
+	base: mode === 'production' ? '/ForMyLove/' : '/',
+}))
 
 
