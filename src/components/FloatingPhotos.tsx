@@ -18,7 +18,7 @@ type DraggablePhotoProps = {
 }
 
 const DraggablePhoto: React.FC<DraggablePhotoProps> = ({ name, seed, size, angle }) => {
-	const src = `/photos/${encodeURIComponent(name)}`
+	const src = new URL(`/photos/${encodeURIComponent(name)}`, import.meta.env.BASE_URL).toString()
 	const x = useMotionValue(0)
 	const y = useMotionValue(0)
 	const vx = useRef((seededRandom(seed + 900) - 0.5) * 40) // px/s
