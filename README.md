@@ -1,4 +1,4 @@
-<img src="docs/Screenshot%202025-08-21%20at%2016.06.13.png" alt="You're Cute Phil" width="100%"/>
+<img src="Screenshot%202025-08-21%20at%2016.06.13.png" alt="You're Cute Phil" width="100%"/>
 
 ## Setup
 
