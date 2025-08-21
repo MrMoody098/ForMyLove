@@ -29,10 +29,12 @@ body {
 		radial-gradient(1000px 700px at 90% 20%, rgba(139, 233, 253, 0.25), transparent 60%),
 		radial-gradient(1000px 900px at 40% 100%, rgba(176, 132, 255, 0.25), transparent 60%),
 		linear-gradient(120deg, var(--bg-1), var(--bg-2) 40%, var(--bg-3));
+	background-attachment: fixed;
 	background-size: 200% 200%;
 	animation: gradientShift 18s ease-in-out infinite;
 	color: var(--white);
-	overflow: hidden;
+	overflow-x: hidden;
+	overflow-y: auto;
 }
 
 @keyframes gradientShift {
@@ -120,7 +122,7 @@ body {
 	position: absolute;
 	inset: 0;
 	pointer-events: none; /* images re-enable pointer-events individually */
-	z-index: 2; /* below content (which is z=5) */
+	z-index: 4; /* above particles, below hero text */
 }
 
 .photo-card {
@@ -139,6 +141,13 @@ body {
 	height: auto;
 	object-fit: cover;
 	background: radial-gradient(60% 40% at 50% 40%, rgba(255, 255, 255, 0.06), transparent 60%);
+}
+
+/* New section that contains the floating photos below the hero */
+.photos-section {
+	position: relative;
+	height: 160vh; /* longer section to fit more photos */
+	overflow: hidden; /* contain the floating/wrapping visuals */
 }
 
 /* Scatter hearts around the viewport */

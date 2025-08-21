@@ -15,6 +15,17 @@ export const App: React.FC = () => {
 	}
 
 	const heartSymbols = ['💖', '💛', '💙', '💜', '❤️']
+	const photosList = [
+		'9DWT7Ujat2ZWZA29BMwPW.1020.jpg',
+		'09gl55piO8wtiaQFoia7m.1020.jpg',
+		'AQNaXtRaOgb9nCC1vDmW9.1020.jpg',
+		'D9gfhDJ3ddZ1NiKUO6brF.1020.jpg',
+		'jopbokehXCNZ4lgzncPd1.1020.jpg',
+		'oYXOwvboRKpkDNx7uL2ry.1020.jpg',
+		'UIc4bas9W3ld2DZyl1Jx8.1020 (1).jpg',
+		'y6rZUQGzeGt3Ax7SjzfLw.1020.jpg',
+		'yGh1Z7GThsHIYEaPvJzM5.1020.jpg',
+	]
 
 	return (
 		<div className="page">
@@ -56,35 +67,7 @@ export const App: React.FC = () => {
 				}}
 			/>
 
-			{/* photos behind text but above particles */}
-			<FloatingPhotos
-				photos={[
-					'9DWT7Ujat2ZWZA29BMwPW.1020.jpg',
-					'09gl55piO8wtiaQFoia7m.1020.jpg',
-					'AQNaXtRaOgb9nCC1vDmW9.1020.jpg',
-					'D9gfhDJ3ddZ1NiKUO6brF.1020.jpg',
-					'jopbokehXCNZ4lgzncPd1.1020.jpg',
-					'oYXOwvboRKpkDNx7uL2ry.1020.jpg',
-					'UIc4bas9W3ld2DZyl1Jx8.1020 (1).jpg',
-					'y6rZUQGzeGt3Ax7SjzfLw.1020.jpg',
-					'yGh1Z7GThsHIYEaPvJzM5.1020.jpg',
-				]}
-			/>
-
 			<div className="content" style={{ position: 'relative', zIndex: 5 }}>
-				<FloatingPhotos
-					photos={[
-						'9DWT7Ujat2ZWZA29BMwPW.1020.jpg',
-						'09gl55piO8wtiaQFoia7m.1020.jpg',
-						'AQNaXtRaOgb9nCC1vDmW9.1020.jpg',
-						'D9gfhDJ3ddZ1NiKUO6brF.1020.jpg',
-						'jopbokehXCNZ4lgzncPd1.1020.jpg',
-						'oYXOwvboRKpkDNx7uL2ry.1020.jpg',
-						'UIc4bas9W3ld2DZyl1Jx8.1020 (1).jpg',
-						'y6rZUQGzeGt3Ax7SjzfLw.1020.jpg',
-						'yGh1Z7GThsHIYEaPvJzM5.1020.jpg',
-					]}
-				/>
 				<motion.h1
 					className="title"
 					initial={{ opacity: 0, y: 20 }}
@@ -126,6 +109,10 @@ export const App: React.FC = () => {
 					))}
 				</div>
 			</div>
+
+			<section className="photos-section">
+				<FloatingPhotos photos={photosList} />
+			</section>
 		</div>
 	)
 }
